@@ -94,7 +94,7 @@ public class Office365ConnectorWebhookNotifierIntegrationTest {
         mockDisplayURLProvider();
         mockEnvironment();
         mockHttpWorker();
-        mockGetChangeSets();
+        //mockGetChangeSets();
         mockTimeUtils();
     }
 

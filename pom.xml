@@ -18,7 +18,7 @@
 
     <artifactId>Office-365-Connector</artifactId>
     <name>Office 365 Connector</name>
-    <version>4.6-SNAPSHOT</version>
+    <version>4.6.1-TFARMER</version>
     <packaging>hpi</packaging>
     <description>This plugin sends Job notifications to JenkinsCI Office 365 Connector.</description>
     <url>https://wiki.jenkins-ci.org/display/JENKINS/Office+365+Connector+Plugin</url>
@@ -162,6 +162,11 @@
             <id>damianszczepanik</id>
             <name>Damian Szczepanik</name>
             <email>damianszczepanik@github</email>
+        </developer>
+        <developer>
+            <id>tfarmer</id>
+            <name>Tom Farmer</name>
+            <email>tfarmer00@github</email>
         </developer>
     </developers>
 

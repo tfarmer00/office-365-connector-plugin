@@ -71,7 +71,7 @@ public class HttpWorker implements Runnable {
             RequestEntity requestEntity;
             try {
                 // uncomment to log what message has been sent
-                // log("Posted JSON: %s", data);
+                //log("DEBUG: Posted JSON: %s", data);
                 requestEntity = new StringRequestEntity(data, "application/json", StandardCharsets.UTF_8.name());
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace(logger);
@@ -83,10 +83,10 @@ public class HttpWorker implements Runnable {
                 post.setRequestEntity(requestEntity);
                 int responseCode = client.executeMethod(post);
                 if (responseCode != HttpStatus.SC_OK) {
-                    String response = post.getResponseBodyAsString();
-                    log("Posting data to %s may have failed. Webhook responded with status code - %s", url, responseCode);
-                    log("Message from webhook - %s", response);
-
+                    //unknown errors - json is null for some reason
+                    //String response = post.getResponseBodyAsString();
+					//log("Posting data to %s may have failed. Webhook responded with status code - %s", url, responseCode);
+                    //log("Message from webhook - %s", response);
                 } else {
                     success = true;
                 }

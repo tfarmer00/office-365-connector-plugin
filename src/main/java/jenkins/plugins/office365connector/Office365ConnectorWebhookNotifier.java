@@ -169,7 +169,8 @@ public final class Office365ConnectorWebhookNotifier {
             /*Agency Customization -- added gettagnumber to this message*/
             activityTitle = jobName + " - <a href=\"" + uri + "\">#" + run.getNumber() + "</a> Started";
             if(factsBuilder.getTagNumber() != "NA") { activityTitle += " >> <i>" + factsBuilder.getTagNumber() + "</i>"; }
-            activitySubtitle = "by " + parser.getAuthor(run.getCauses()) + " (" + fileCount + " file(s) changed)";
+            //activitySubtitle = "by " + parser.getAuthor(run.getCauses()) + " (" + fileCount + " file(s) changed)";
+            activitySubtitle = "by " + parser.getAuthor(run.getCauses());
         } else {
             factsBuilder.addStatusStarted();
             factsBuilder.addStartTime();
@@ -191,6 +192,8 @@ public final class Office365ConnectorWebhookNotifier {
     private Card createJobCompletedCard() {
         String jobName = getDisplayName();
         String summary = jobName + ": Build #" + run.getNumber();
+        //author
+        Parser parser = new Parser();
 
         Fact statusFact = FactsBuilder.buildStatus();
         factsBuilder.addFact(statusFact);
@@ -257,7 +260,8 @@ public final class Office365ConnectorWebhookNotifier {
         }
 
         factsBuilder.addRemarks();
-        addScmDetails(true);
+        //addScmDetails(true);
+        addScmDetails(false);
 
         String activityTitle = "";
         String activitySubtitle = "";
@@ -268,7 +272,8 @@ public final class Office365ConnectorWebhookNotifier {
             /*Agency Customization -- added gettagnumber to this message*/
             activityTitle = jobName + " - <a href=\"" + uri + "\">#" + run.getNumber() + "</a> " + status + " after "+ factsBuilder.getBuildDuration();
             if(factsBuilder.getTagNumber() != "NA") { activityTitle += " >> <i>" + factsBuilder.getTagNumber() + "</i>"; }
-            activitySubtitle = changesSingleString;
+            //activitySubtitle = changesSingleString;
+            activitySubtitle = "by " + parser.getAuthor(run.getCauses());
             factsBuilder.addTestsCompact();
             section = new Section(activityTitle, activitySubtitle, factsBuilder.collectCompact());
         } else {
@@ -400,7 +405,8 @@ public final class Office365ConnectorWebhookNotifier {
                 return changedFiles.toString();
             }
         }
-        return "No changes";
+        //return "No changes";
+        return "";
     }
 
     private Collection<? extends ChangeLogSet.AffectedFile> getAffectedFiles(ChangeLogSet.Entry entry) {

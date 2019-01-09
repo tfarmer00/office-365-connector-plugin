@@ -86,7 +86,7 @@ public final class Office365ConnectorWebhookNotifier {
 
         WebhookJobProperty property = (WebhookJobProperty) job.getProperty(WebhookJobProperty.class);
         if (property == null) {
-            log("No webhooks to notify");
+            //log("No webhooks to notify");
             return;
         }
 
@@ -119,7 +119,7 @@ public final class Office365ConnectorWebhookNotifier {
 
         WebhookJobProperty property = (WebhookJobProperty) job.getProperty(WebhookJobProperty.class);
         if (property == null) {
-            log("No webhooks to notify");
+            //log("No webhooks to notify");
             return;
         }
 
